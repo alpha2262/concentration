@@ -8,20 +8,29 @@ var D = document.getElementById("d")
 
 var click1 = "no selection"
 var click2 = "no selection"
+var firstclick = ""  //firstclick should be the ID; prevent double selection
+var clickcount = 0
+var X = "a"
 
 function clicking(){
+  clickcount = clickcount += 1
+    console.log("clickcount:" + clickcount)
   if (click1 === "no selection"){
-    click1 = "input1"
-    //use 'this' method to add selection
+    click1 = this.addEventListener("click", X)
+    firstclick = this.addEventListener("click", X)
     console.log(click1)
   }
-  else {(click2 = "input1")
+  else if (firstclick != this.addEventListener("click", X)){
+    (click2 = this.addEventListener("click", X))
+    //on second click, pushes click to click2 then checks if clicks match
+    //no action if same item selected twice in a row (i.e can't match with yourself)
 
   if (click1 === click2){
     console.log("yup")
   }
   else console.log("nope")
 
+  //after second match, resets clicked variables
   click1="no selection"
   click2="no selection"
   console.log(click1)
@@ -36,11 +45,11 @@ D.addEventListener("click", functionD)
 
 
 function functionA(){
-  console.log("clicked A")
-  $("#a").text("hidden");
-  clicking("A")
+  console.log("clicked A");
+  clicking();
+  // comparing();
+}
 
-  // variable updated to reflect first block selection
   // check if class matches and switched to 'on's
     //on second click, second item displays
       //do first and second item match?
@@ -51,7 +60,7 @@ function functionA(){
         //if not, restart matching function
 
 
-}
+
 
 function functionB(){
   console.log("clicked B")
@@ -60,14 +69,16 @@ function functionB(){
 
 function functionC(){
   console.log("clicked C")
+  clicking("C")
 }
 
 function functionD(){
   console.log("clicked D")
+  clicking("D")
 }
 
-var $buttonIClickedOn = $(this)
-  console.log($buttonIClickedOn)
+// var $buttonIClickedOn = $(this)
+//   console.log($buttonIClickedOn)
 
 
 });

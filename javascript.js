@@ -1,31 +1,33 @@
 $( document ).ready(function() {
   console.log( "document loaded")
 
-var click1 = "no selection"
-var click2 = "no selection"
+var ns = "no selection"
+var click1 = ns
+var click2 = ns
 var firstclick = ""
-var secondclick = ""
 var clickcount = 0
+var timer = 0
 
 function clicking(id, name){
   clickcount = clickcount += 1
     console.log("clickcount:" + clickcount)
     $("#clickcount").text("Number of tries: " + clickcount)
 
-  if (click1 === "no selection"){
+  if (click1 === ns){
     click1 = name
+    firstclick = id
   }
   else if (firstclick != id){
     click2 = name
     //on second click, pushes click to click2 then checks if clicks match
     //no action if same item selected twice in a row (i.e can't match with yourself)
   }
-  console.log("finished clicking; id:" + id + " name:" + name)
+  // console.log("finished clicking; id:" + id + " name:" + name)
   comparing()
 }
 
 function comparing(){
-  if (click2 != "no selection"){
+  if (click2 != ns){
     if (click1 === click2){
       console.log("yup")
       $(".evaluating").text(function(){
@@ -36,12 +38,12 @@ function comparing(){
       console.log("nope")
       //after second match, resets clicked variables
     }
-    click1="no selection"
-    click2="no selection"
+    click1 = ns
+    click2 = ns
     console.log("finished compare")
 
-    }
-};
+  }
+}
 $(".board div").on("click", onclick);
 
 function onclick(){
@@ -53,7 +55,7 @@ function onclick(){
   clicking(id, name);
   setTimeout(function(){
     $(".evaluating").html("$").removeClass("evaluating");
-    click1 = "no selection";
+    click1 = ns;
   },2000)
 }
 

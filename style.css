@@ -1,0 +1,65 @@
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script);
+@import url(http://fonts.googleapis.com/css?family=Ruluko);
+
+*{
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:inherit;
+  font-weight:inherit;
+  font-family:inherit;
+  font-style:inherit;
+  text-decoration:inherit;
+  line-height:inherit;
+  color:inherit;
+}
+
+title {
+  color: #F52F4F;
+  font-family: 'Oleo Script', cursive;
+  font-size: 50px;
+}
+
+h1 {
+  color: "green";
+  font-family: 'Oleo Script', cursive;
+  font-size: 30px;
+}
+
+p {
+  color: "green";
+  font-family: 'Oleo Script', cursive;
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+.board div {
+  text-shadow: 1px;
+  background-color: #6C9A74;
+  border: 1px solid #295A33;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 15px;
+  padding: 15px;
+  width: 15px;
+  text-align: center;
+}
+.board div:active {
+  opacity: .5
+}
+
+/*keep tweaking*/
+.board div {
+  color: "white";
+  font-family:sans-serif;
+  font-size: 20px;
+}
+
+.board div:hover {
+  background-color: "red";
+  border-radius: 15px;
+}
+
+body {
+  padding: 10px;
+}

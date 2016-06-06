@@ -1,12 +1,43 @@
 $( document ).ready(function() {
   console.log( "document loaded")
 
+var A = document.getElementById("A")
+var B = document.getElementById("B")
+var C = document.getElementById("C")
+var D = document.getElementById("D")
+
+var click1 = 1
+var click2 = 2
+
+A.addEventListener("click", functionA)
+B.addEventListener("click", functionB)
+C.addEventListener("click", functionC)
+D.addEventListener("click", functionD)
+
+function functionA(){
+  console.log("clicked A")
+  $("#a").text("hidden");
+  $("#a .on").text("off");
+  // check if class matches and switched to 'on's
+}
+
+function functionB(){
+  console.log("clicked B")
+}
+
+function functionC(){
+  console.log("clicked C")
+}
+
+function functionD(){
+  console.log("clicked D")
+}
+
+var $buttonIClickedOn = $(this)
+  console.log($buttonIClickedOn)
 
 
-
-
-
-  });
+});
 
   //when user selects timer, the timer will start and icons become selectable
 

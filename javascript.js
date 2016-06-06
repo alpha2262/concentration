@@ -1,28 +1,26 @@
 $( document ).ready(function() {
   console.log( "document loaded")
 
-var A = document.getElementById("a")
-var B = document.getElementById("b")
-var C = document.getElementById("c")
-var D = document.getElementById("d")
+var board = $("[type='button']")
 
 var click1 = "no selection"
 var click2 = "no selection"
-var firstclick = "x"
+var firstclick = ""
+var secondclick = ""
 var clickcount = 0
 
-function clicking(g, i){
+function clicking(id, value){
   clickcount = clickcount += 1
     console.log("clickcount:" + clickcount)
   if (click1 === "no selection"){
-    click1 = i
+    click1 = value
   }
-  else if (firstclick != g){
-    click2 = i
+  else if (firstclick != id){
+    click2 = value
     //on second click, pushes click to click2 then checks if clicks match
     //no action if same item selected twice in a row (i.e can't match with yourself)
   }
-  console.log("finished clicking name:" + g + " id:" + i)
+  console.log("finished clicking; id:" + id + " value:" + value)
   comparing()
 }
 
@@ -30,7 +28,10 @@ function comparing(){
   if (click2 != "no selection"){
     if (click1 === click2){
       console.log("yup")
-      //write to stay visible
+      $(".evaluating").text(function(){
+        return $(this).attr("name")
+      }).removeClass("evaluating")
+      //write to set record somewhere to visible
     }
     else if (click1 != click2){
       console.log("nope")
@@ -39,44 +40,27 @@ function comparing(){
     click1="no selection"
     click2="no selection"
     console.log("finished compare")
+
     }
 };
 
 //on click, the block displays
-A.addEventListener("click", functionA)
-B.addEventListener("click", functionB)
-C.addEventListener("click", functionC)
-D.addEventListener("click", functionD)
+$(".board div").on("click", onclick)
 
-
-function functionA(){
-  console.log("clicked A");
-  //pull these values in using 'this' function?
-  var name = "A"
-  var id = "1"
-  clicking(name, id);
+function onclick(){
+  var id = $(this).attr("id")
+  var value = $(this).attr("value")
+  $(this).addClass("evaluating")
+  $(this).html($(this).attr("name"))
+  console.log("clicked ", id, value);
+  clicking(id, value);
+  setTimeout(function(){
+    $(".evaluating").html("$").removeClass("evaluating")
+  },2000)
 }
 
-function functionB(){
-  console.log("clicked B")
-  var name = "B"
-  var id = "1"
-  clicking(name, id);
-}
+//set timer
 
-function functionC(){
-  console.log("clicked C")
-  var name = "C"
-  var id = "2"
-  clicking(name, id);
-}
-
-function functionD(){
-  console.log("clicked D")
-  var name = "D"
-  var id = "2"
-  clicking(name, id);
-}
 
 // check if class matches and switched to 'on's
   //on second click, second item displays

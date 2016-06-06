@@ -8,33 +8,38 @@ var D = document.getElementById("d")
 
 var click1 = "no selection"
 var click2 = "no selection"
-var firstclick = ""  //firstclick should be the ID; prevent double selection
+var firstclick = "x"
 var clickcount = 0
-var X = "a"
 
-function clicking(){
+function clicking(g, i){
   clickcount = clickcount += 1
     console.log("clickcount:" + clickcount)
   if (click1 === "no selection"){
-    click1 = this.addEventListener("click", X)
-    firstclick = this.addEventListener("click", X)
-    console.log(click1)
+    click1 = i
   }
-  else if (firstclick != this.addEventListener("click", X)){
-    (click2 = this.addEventListener("click", X))
+  else if (firstclick != g){
+    click2 = i
     //on second click, pushes click to click2 then checks if clicks match
     //no action if same item selected twice in a row (i.e can't match with yourself)
-
-  if (click1 === click2){
-    console.log("yup")
   }
-  else console.log("nope")
+  console.log("finished clicking name:" + g + " id:" + i)
+  comparing()
+}
 
-  //after second match, resets clicked variables
-  click1="no selection"
-  click2="no selection"
-  console.log(click1)
-  }
+function comparing(){
+  if (click2 != "no selection"){
+    if (click1 === click2){
+      console.log("yup")
+      //write to stay visible
+    }
+    else if (click1 != click2){
+      console.log("nope")
+      //after second match, resets clicked variables
+    }
+    click1="no selection"
+    click2="no selection"
+    console.log("finished compare")
+    }
 };
 
 //on click, the block displays
@@ -46,36 +51,41 @@ D.addEventListener("click", functionD)
 
 function functionA(){
   console.log("clicked A");
-  clicking();
-  // comparing();
+  //pull these values in using 'this' function?
+  var name = "A"
+  var id = "1"
+  clicking(name, id);
 }
-
-  // check if class matches and switched to 'on's
-    //on second click, second item displays
-      //do first and second item match?
-        //if yes, continue to display and update variable to show
-        //if no, flip both first and second back to blank after 1 second
-      //are all blocks visible?
-        //if so, game ends
-        //if not, restart matching function
-
-
-
 
 function functionB(){
   console.log("clicked B")
-  clicking("B")
+  var name = "B"
+  var id = "1"
+  clicking(name, id);
 }
 
 function functionC(){
   console.log("clicked C")
-  clicking("C")
+  var name = "C"
+  var id = "2"
+  clicking(name, id);
 }
 
 function functionD(){
   console.log("clicked D")
-  clicking("D")
+  var name = "D"
+  var id = "2"
+  clicking(name, id);
 }
+
+// check if class matches and switched to 'on's
+  //on second click, second item displays
+    //do first and second item match?
+      //if yes, continue to display and update variable to show
+      //if no, flip both first and second back to blank after 1 second
+    //are all blocks visible?
+      //if so, game ends
+      //if not, restart matching function
 
 // var $buttonIClickedOn = $(this)
 //   console.log($buttonIClickedOn)

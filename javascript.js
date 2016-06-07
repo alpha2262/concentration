@@ -56,8 +56,20 @@ function onclick(){
   setTimeout(function(){
     $(".evaluating").html("$").removeClass("evaluating");
     click1 = ns;
-  },2000)
+  },3000)
 }
+
+//timer function needs to coninue showing updates
+$("#timer").on("click", onstart);
+
+function onstart(){
+  var time = setInterval(function(){
+    $("#timer").html("Timer: " + time + ":00")
+  },1000)
+  console.log("time: " + time)
+};
+
+
 
 });
 

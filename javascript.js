@@ -58,26 +58,37 @@ function onclick(){
     click1 = ns;
   },2000)
 
-  $(".evaluating").html(function(){
-    return $(this).append("img src");
-  })
+  // $(".evaluating").html(function(){
+  //   return $(this).append("img src");
+  // })
 
-  
+
 }
 
 //timer function needs to coninue showing updates
+//add in minutes divison
 $("#timer").on("click", time);
 
+var timenow = 0   //in seconds
+var timecounter = ""
+
+function minutes(){
+  if(timenow >=60){
+  (timenow/60).text + ":"
+}
+  else "0:"
+  console.log(minutes)
+}
+
 function time(){
-  time2 = 44
   setInterval(function(){
-    $("#timer").html("Timer: " + time2 + ":00")
+    timenow = timenow + 1
+    timecounter;
   }, 1000)
-
-  console.log("time: " + time)
+//how to get the html to continuously display?
+$("#timer").html("Timer " + timecounter)
+  console.log("time:" + timecounter)
 };
-
-
 
 });
 

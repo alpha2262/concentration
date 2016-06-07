@@ -32,7 +32,7 @@ function comparing(){
       console.log("yup")
       $(".evaluating").text(function(){
         return $(this).attr("name")
-      }).removeClass("evaluating")
+      }).removeClass("evaluating").addClass("matched")
     }
     else if (click1 != click2){
       console.log("nope")
@@ -56,16 +56,24 @@ function onclick(){
   setTimeout(function(){
     $(".evaluating").html("$").removeClass("evaluating");
     click1 = ns;
-  },3000)
+  },2000)
+
+  $(".evaluating").html(function(){
+    return $(this).append("img src");
+  })
+
+  
 }
 
 //timer function needs to coninue showing updates
-$("#timer").on("click", onstart);
+$("#timer").on("click", time);
 
-function onstart(){
-  var time = setInterval(function(){
-    $("#timer").html("Timer: " + time + ":00")
-  },1000)
+function time(){
+  time2 = 44
+  setInterval(function(){
+    $("#timer").html("Timer: " + time2 + ":00")
+  }, 1000)
+
   console.log("time: " + time)
 };
 

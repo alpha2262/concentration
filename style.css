@@ -33,6 +33,11 @@ p {
   padding-top: 20px;
 }
 
+.evaluating img source {
+  height: 200px;
+  width: 200px;
+}
+
 .board div {
   text-shadow: 1px;
   background-color: #6C9A74;
@@ -59,6 +64,7 @@ p {
   background-color: "red";
   border-radius: 15px;
 }
+
 
 body {
   padding: 10px;

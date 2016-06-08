@@ -1,9 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script);
 @import url(http://fonts.googleapis.com/css?family=Ruluko);
+@import url(https://fonts.googleapis.com/css?family=Abel);
 
 /*space boxes consistently as four per row?
 add box properties to pause
 flip action on squares?*/
+/*change font*/
 
 *{
   margin:0;
@@ -26,15 +28,17 @@ title {
 
 h1 {
   color: "green";
-  font-family: 'Oleo Script', cursive;
+  font-family: 'Abel', sans-serif;
   font-size: 30px;
+  padding-bottom: 10px;
 }
 
 p, .start div {
   color: "green";
-  font-family: 'Oleo Script', cursive;
+  font-family: 'Abel', sans-serif;
   font-size: 20px;
-  padding-top: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .start div {
@@ -43,11 +47,25 @@ p, .start div {
 }
 
 #pause {
-  width: 70px;
+  width: 60px;
+  padding-left: 5px;
+  border-right: 100px;
+  border-radius: 5px;
+  background-color: #ff944A;
+  text-align: center;
+  border: 1px solid #295A33;
+}
+
+#pause:active{
+  opacity: .5
 }
 
 #timer {
-  width: 250px;
+  width: 275px;
+}
+
+#clickcount {
+  width: 200px;
 }
 
 

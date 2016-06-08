@@ -6,9 +6,10 @@ var click1 = ns
 var click2 = ns
 var firstclick = ""
 var clickcount = 0
+var matches = 0
 
 function clicking(id, name){
-  clickcount = clickcount += 1
+  clickcount++
   $("#clickcount").text("Number of tries: " + clickcount)
 
   if (click1 === ns){
@@ -28,8 +29,14 @@ function comparing(){
     if (click1 === click2){
       console.log("yup")
       $(".evaluating").text(function(){
-        return $(this).attr("name")
-      }).removeClass("evaluating").addClass("matched")
+        return $(this).attr("name")   //was name
+      }).removeClass("evaluating").addClass("matching")
+      matches++
+      $("#matches").text("Number of matches: " + matches)
+      if (matches === 6){
+        clearInterval(timerId)
+        $("#play").html("Congrats!")
+      }
     }
     else if (click1 != click2){
       console.log("nope")
@@ -55,12 +62,11 @@ function onclick(){
     click1 = ns;
   },2000)
 
+
   // var pic = $(this).attr("img")
   // console.log(pic)
   // $(this).html($(this).html("pic"))
 }
-
-
 
 //timer functions below
 //how to get the timer html to continuously display updates per second?
@@ -100,7 +106,6 @@ function incrementSeconds () {
   timenow++
   timeInMinutes = Math.floor(timenow/60)
   timeInSeconds = timenow % 60
-console.log(timeInMinutes)
   minutesDisplay = ""
   if (timeInMinutes >= 2) {
     minutesDisplay = timeInMinutes + " Minutes, "
@@ -113,7 +118,7 @@ console.log(timeInMinutes)
 
 });
 
-//set timer
+
 //if all squares complete, game ends
 
   //when user selects timer, the timer will start and icons become selectable

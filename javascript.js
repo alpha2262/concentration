@@ -6,12 +6,10 @@ var click1 = ns
 var click2 = ns
 var firstclick = ""
 var clickcount = 0
-var timer = 0
 
 function clicking(id, name){
   clickcount = clickcount += 1
-    console.log("clickcount:" + clickcount)
-    $("#clickcount").text("Number of tries: " + clickcount)
+  $("#clickcount").text("Number of tries: " + clickcount)
 
   if (click1 === ns){
     click1 = name
@@ -22,7 +20,6 @@ function clicking(id, name){
     //on second click, pushes click to click2 then checks if clicks match
     //no action if same item selected twice in a row (i.e can't match with yourself)
   }
-  // console.log("finished clicking; id:" + id + " name:" + name)
   comparing()
 }
 
@@ -41,9 +38,9 @@ function comparing(){
     click1 = ns
     click2 = ns
     console.log("finished compare")
-
   }
 }
+
 $(".board div").on("click", onclick);
 
 function onclick(){
@@ -58,12 +55,12 @@ function onclick(){
     click1 = ns;
   },2000)
 
-  // $(".evaluating").html(function(){
-  //   return $(this).append("img src");
-  // })
-
-
+  // var pic = $(this).attr("img")
+  // console.log(pic)
+  // $(this).html($(this).html("pic"))
 }
+
+
 
 //timer functions below
 //how to get the timer html to continuously display updates per second?
@@ -72,20 +69,39 @@ $("#timer").on("click", time);
 var timenow = 0   //in aggregate seconds
 var timeInSeconds = 0
 var timeInMinutes = 0
+var timerIsAlreadyRunning = false
+var timerId;
 
 function time(){
-  setInterval(function(){
-    timenow = timenow + 1
-  }, 1000)
-
-  if(timenow >=60){
-    timeInMinutes = Math.floor(timenow/60)
-    timeInSeconds = timenow % 60
+  if (timerIsAlreadyRunning === false){
+    timerIsAlreadyRunning = true
+    timerId = setInterval(incrementSeconds, 1000)
+  } else {
+    clearInterval(timerId)
+    timerIsAlreadyRunning = false
   }
-  else timeInSeconds = timenow % 60
-  console.log("minutes", timeInMinutes, "seconds", timeInSeconds)
-  $("#timer").html("Timer:", timeInMinutes, ":", timeInSeconds)
 }
+
+function incrementSeconds () {
+  timenow++
+   $("#timer").html(timenow + " seconds")
+  console.log(timenow);
+}
+
+//   setInterval(function(){
+//     timenow = timenow + 1
+//   }, 1000)
+//
+//   if(timenow >=60){
+//     timeInMinutes = Math.floor(timenow/60)
+//     timeInSeconds = timenow % 60
+//   }
+//   else timeInSeconds = timenow % 60
+//
+//   console.log("minutes", timeInMinutes, "seconds", timeInSeconds)
+//   $("#timer").html("Timer: n" + timeInMinutes, ":" + timeInSeconds)
+// }
+// $("#timer").html("Timer:", timeInMinutes, ":", timeInSeconds)
 
 });
 

@@ -1,6 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script);
 @import url(http://fonts.googleapis.com/css?family=Ruluko);
 
+/*space boxes consistently as four per row?
+add box properties to pause
+flip action on squares?*/
+
 *{
   margin:0;
   padding:0;
@@ -26,12 +30,26 @@ h1 {
   font-size: 30px;
 }
 
-p {
+p, .start div {
   color: "green";
   font-family: 'Oleo Script', cursive;
   font-size: 20px;
-  padding-top: 20px;
+  padding-top: 15px;
 }
+
+.start div {
+  display:inline-block;
+  padding-right: 20px;
+}
+
+#pause {
+  width: 70px;
+}
+
+#timer {
+  width: 250px;
+}
+
 
 .evaluating img source {
   height: 200px;

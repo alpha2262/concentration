@@ -64,44 +64,52 @@ function onclick(){
 
 //timer functions below
 //how to get the timer html to continuously display updates per second?
-$("#timer").on("click", time);
+$(".board").on("click", time);
+$("#pause").on("click", pauseCheck);
 
 var timenow = 0   //in aggregate seconds
 var timeInSeconds = 0
 var timeInMinutes = 0
 var timerIsAlreadyRunning = false
 var timerId;
+var timerPause = true
 
 function time(){
   if (timerIsAlreadyRunning === false){
     timerIsAlreadyRunning = true
     timerId = setInterval(incrementSeconds, 1000)
-  } else {
+    timerPause = false
+    $("#play").html("Good luck!")
+    $("#pause").html("Pause")
+  }
+}
+
+function pauseCheck(){
+  if (timerPause === false){
     clearInterval(timerId)
     timerIsAlreadyRunning = false
+    timerPause = true
+    $("#pause").html("Unpause")
+  }
+  else if (timerPause === true){
+    time()
   }
 }
 
 function incrementSeconds () {
   timenow++
-   $("#timer").html(timenow + " seconds")
-  console.log(timenow);
+  timeInMinutes = Math.floor(timenow/60)
+  timeInSeconds = timenow % 60
+console.log(timeInMinutes)
+  minutesDisplay = ""
+  if (timeInMinutes >= 2) {
+    minutesDisplay = timeInMinutes + " Minutes, "
+  }
+  else if (timeInMinutes >= 1 ) {
+   minutesDisplay = timeInMinutes + " Minute, "
+  }
+   $("#timer").html("Timer: " + minutesDisplay + timeInSeconds + " seconds")
 }
-
-//   setInterval(function(){
-//     timenow = timenow + 1
-//   }, 1000)
-//
-//   if(timenow >=60){
-//     timeInMinutes = Math.floor(timenow/60)
-//     timeInSeconds = timenow % 60
-//   }
-//   else timeInSeconds = timenow % 60
-//
-//   console.log("minutes", timeInMinutes, "seconds", timeInSeconds)
-//   $("#timer").html("Timer: n" + timeInMinutes, ":" + timeInSeconds)
-// }
-// $("#timer").html("Timer:", timeInMinutes, ":", timeInSeconds)
 
 });
 

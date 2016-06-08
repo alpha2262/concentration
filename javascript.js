@@ -65,30 +65,27 @@ function onclick(){
 
 }
 
-//timer function needs to coninue showing updates
-//add in minutes divison
+//timer functions below
+//how to get the timer html to continuously display updates per second?
 $("#timer").on("click", time);
 
-var timenow = 0   //in seconds
-var timecounter = ""
-
-function minutes(){
-  if(timenow >=60){
-  (timenow/60).text + ":"
-}
-  else "0:"
-  console.log(minutes)
-}
+var timenow = 0   //in aggregate seconds
+var timeInSeconds = 0
+var timeInMinutes = 0
 
 function time(){
   setInterval(function(){
     timenow = timenow + 1
-    timecounter;
   }, 1000)
-//how to get the html to continuously display?
-$("#timer").html("Timer " + timecounter)
-  console.log("time:" + timecounter)
-};
+
+  if(timenow >=60){
+    timeInMinutes = Math.floor(timenow/60)
+    timeInSeconds = timenow % 60
+  }
+  else timeInSeconds = timenow % 60
+  console.log("minutes", timeInMinutes, "seconds", timeInSeconds)
+  $("#timer").html("Timer:", timeInMinutes, ":", timeInSeconds)
+}
 
 });
 

@@ -8,6 +8,22 @@ var firstclick = ""
 var clickcount = 0
 var matches = 0
 
+$(".board div").on("click", onclick);
+
+function onclick(){
+
+  var id = $(this).attr("id")
+  var name = $(this).attr("data-myvar")
+  $(this).addClass("evaluating")
+  $(this).html($(this).attr("data-myvar"))
+  // $(this).addClass(".evaluate")
+  clicking(id, name);
+  setTimeout(function(){
+    $(".evaluating").html("?").removeClass("evaluating");
+    click1 = ns;
+  },3000)
+}
+
 function clicking(id, name){
   clickcount++
   $("#clickcount").text("Number of tries: " + clickcount)
@@ -29,11 +45,13 @@ function comparing(){
     if (click1 === click2){
       console.log("yup")
       $(".evaluating").text(function(){
-        return $(this).attr("name")   //was name
+        return $(this).attr("[data-myvar]")
       }).removeClass("evaluating").addClass("matching")
+      // $(".matching").fadeOut(3000)
+      //add in fade if css can be set to not reorder blocks
       matches++
       $("#matches").text("Number of matches: " + matches)
-      if (matches === 6){
+      if (matches === 8){
         clearInterval(timerId)
         $("#play").html("Congrats!")
       }
@@ -46,26 +64,6 @@ function comparing(){
     click2 = ns
     console.log("finished compare")
   }
-}
-
-$(".board div").on("click", onclick);
-
-function onclick(){
-
-  var id = $(this).attr("id")
-  var name = $(this).attr("name")
-  $(this).addClass("evaluating")
-  $(this).html($(this).attr("name"))
-  clicking(id, name);
-  setTimeout(function(){
-    $(".evaluating").html("$").removeClass("evaluating");
-    click1 = ns;
-  },3000)
-
-
-  // var pic = $(this).attr("img")
-  // console.log(pic)
-  // $(this).html($(this).html("pic"))
 }
 
 //timer functions below
@@ -117,23 +115,3 @@ function incrementSeconds () {
 }
 
 });
-
-
-//if all squares complete, game ends
-
-  //when user selects timer, the timer will start and icons become selectable
-
-  //var for keeping track of what's displayed/not. class show on/off?
-
-
-  //on click, the block displays
-    //on second click, second item displays
-      //do first and second item match?
-        //if yes, continue to display and update variable to show
-        //if no, flip both first and second back to blank after 1 second
-      //are all blocks visible?
-        //if so, game ends
-        //if not, restart matching function
-
-  //on end when all matching, stop timer, alert 'good job!'
-  //prompt to reset game?

@@ -1,11 +1,8 @@
+<!DOCTYPE html>
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script);
 @import url(http://fonts.googleapis.com/css?family=Ruluko);
 @import url(https://fonts.googleapis.com/css?family=Abel);
 
-/*space boxes consistently as four per row?
-add box properties to pause
-flip action on squares?*/
-/*change font*/
 
 *{
   margin:0;
@@ -56,7 +53,7 @@ p, .start div {
   border: 1px solid #295A33;
 }
 
-#pause:active{
+#pause:active {
   opacity: .5
 }
 
@@ -72,6 +69,11 @@ p, .start div {
 .evaluating img source {
   height: 200px;
   width: 200px;
+}
+
+.board {
+  margin-left: 250px;
+  margin-right: 250px;
 }
 
 .board div {
@@ -100,7 +102,6 @@ p, .start div {
   background-color: "red";
   border-radius: 15px;
 }
-
 
 body {
   padding: 10px;

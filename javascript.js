@@ -60,7 +60,7 @@ function onclick(){
   setTimeout(function(){
     $(".evaluating").html("$").removeClass("evaluating");
     click1 = ns;
-  },2000)
+  },3000)
 
 
   // var pic = $(this).attr("img")

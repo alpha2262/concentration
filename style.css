@@ -32,6 +32,7 @@ h1 {
 
 #play {
   height: 30px;
+  transform: rotate(180);
 }
 
 p, .start div {
@@ -45,6 +46,7 @@ p, .start div {
 .start div {
   display:inline-block;
   padding-right: 25px;
+  margin-bottom: 20px;
 }
 
 #pause {
@@ -69,7 +71,7 @@ p, .start div {
   width: 200px;
 }
 
-.evaluate {
+.board .evaluating, .board .matching {
   background-color: #ff944A;
 }
 

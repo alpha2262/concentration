@@ -16,12 +16,11 @@ function onclick(){
   var name = $(this).attr("data-myvar")
   $(this).addClass("evaluating")
   $(this).html($(this).attr("data-myvar"))
-  // $(this).addClass(".evaluate")
   clicking(id, name);
   setTimeout(function(){
     $(".evaluating").html("?").removeClass("evaluating");
     click1 = ns;
-  },3000)
+  },2000)
 }
 
 function clicking(id, name){
@@ -47,8 +46,7 @@ function comparing(){
       $(".evaluating").text(function(){
         return $(this).attr("[data-myvar]")
       }).removeClass("evaluating").addClass("matching")
-      // $(".matching").fadeOut(3000)
-      //add in fade if css can be set to not reorder blocks
+
       matches++
       $("#matches").text("Number of matches: " + matches)
       if (matches === 8){
@@ -56,10 +54,7 @@ function comparing(){
         $("#play").html("Congrats!")
       }
     }
-    else if (click1 != click2){
-      console.log("nope")
-      //after second match, resets clicked variables
-    }
+    else
     click1 = ns
     click2 = ns
     console.log("finished compare")
